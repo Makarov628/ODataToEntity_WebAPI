@@ -1,10 +1,8 @@
 # ODataToEntity_WebAPI
 
-```
-POST https://localhost:5001/odata/DictAreas
-```
-
 ```json
+POST https://localhost:5001/odata/DictAreas
+
 {
     "Code": null,
     "Name": "123123 Test"
