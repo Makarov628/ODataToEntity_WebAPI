@@ -1,0 +1,41 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DictArea](
+	[AreaID] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Code] [nvarchar](10) NULL,
+ CONSTRAINT [PK_DictArea] PRIMARY KEY CLUSTERED 
+(
+	[AreaID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[DictCities] (
+	[CitiesID] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[AreaID] [int] NOT NULL,
+	[IsVillage] [bit] NULL,
+	[IsActive] [bit] NOT NULL,
+	[Code] [nvarchar](10) NULL,
+	[IsDefault] [bit] NOT NULL,
+	[LocationID] [int] NULL,
+ CONSTRAINT [PK_DictCities] PRIMARY KEY CLUSTERED 
+(
+	[CitiesID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[DictCities] ADD  CONSTRAINT [DF_DictCities_IsActive]  DEFAULT (1) FOR [IsActive]
+GO
+ALTER TABLE [dbo].[DictCities] ADD  CONSTRAINT [DF_DictCities_IsDefault]  DEFAULT ((0)) FOR [IsDefault]
+GO
+ALTER TABLE [dbo].[DictCities]  WITH NOCHECK ADD  CONSTRAINT [FK_DictCities_DictArea] FOREIGN KEY([AreaID])
+REFERENCES [dbo].[DictArea] ([AreaID])
+GO
+ALTER TABLE [dbo].[DictCities] CHECK CONSTRAINT [FK_DictCities_DictArea]
+

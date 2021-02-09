@@ -4,4 +4,14 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="linq2db" Version="3.2.3" />
+    <PackageReference Include="linq2db.AspNet" Version="3.2.3" />
+    <PackageReference Include="linq2db.SqlServer" Version="3.2.3" />
+    <PackageReference Include="OdataToEntity" Version="2.6.1" />
+    <PackageReference Include="OdataToEntity.AspNetCore" Version="2.6.1" />
+    <PackageReference Include="OdataToEntity.Linq2Db" Version="2.6.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
 </Project>
